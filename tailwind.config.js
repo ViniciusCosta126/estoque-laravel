@@ -23,7 +23,8 @@ export default {
       'gray': '#93A8AC',
       'gray-light': '#d3dce6',
       'dark':'#000',
-      "white":"#ffff"
+      "white":"#ffff",
+      "red":"#DF2F2F"
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemFormRequest;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,15 @@ class ItemController extends Controller
         return view('item.create');
     }
 
-    public function store(Request $request)
+    public function store(ItemFormRequest $request)
     {
-        //dd($request->all());
         $item = Item::create($request->all());
         return to_route('item.index');
+    }
+
+    public function destroy(Item $item)
+    {
+        $item->delete();
+        return to_route("item.index");
     }
 }

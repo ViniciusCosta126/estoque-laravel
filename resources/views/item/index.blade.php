@@ -16,13 +16,12 @@
                     <td class="text-center py-1">{{ $item->minimum_quantity }}</td>
                     <td class="flex justify-evenly py-1">
                         <a href="#">
-                            <i class="fas fa-edit"></i>
+                            <i class="fas text-yellow fa-edit"></i>
                         </a>
-                        <form action="" method="POST">
+                        <form action="{{ route('item.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <input type="hidden" value="{{ $item->id }}" name="id">
-                            <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                            <button type="submit"><i class="fas text-red fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>
