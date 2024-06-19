@@ -11,13 +11,13 @@
                 </div>
                 <ul class="suspenso ml-4 hidden">
                     <li>
-                        <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <a href="{{ route('item.index') }}" class="block p-2 hover:bg-gray-700 flex items-center">
                             <i class="fas fa-chevron-right mr-2 text-xs"></i>
                             Ver estoque
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">
+                        <a href="{{ route('item.create') }}" class="block p-2 hover:bg-gray-700 flex items-center">
                             <i class="fas fa-chevron-right mr-2 text-xs"></i>
                             Adicionar produto
                         </a>

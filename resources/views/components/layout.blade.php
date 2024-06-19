@@ -32,6 +32,7 @@
     <div class="flex">
         <x-sidebar.sidebar />
         <main class="container mx-auto p-4 ">
+            <h1 class="text-4xl font-bold uppercase mb-4">{{ $page }}</h1>
             {{ $slot }}
         </main>
     </div>
