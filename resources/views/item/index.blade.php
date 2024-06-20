@@ -15,7 +15,7 @@
                     <td class="text-center py-1">{{ $item->amount }}</td>
                     <td class="text-center py-1">{{ $item->minimum_quantity }}</td>
                     <td class="flex justify-evenly py-1">
-                        <a href="#">
+                        <a href="{{ route('item.edit', $item->id) }}">
                             <i class="fas text-yellow fa-edit"></i>
                         </a>
                         <form action="{{ route('item.destroy', $item->id) }}" method="POST">

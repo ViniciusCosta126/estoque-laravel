@@ -25,6 +25,18 @@ class ItemController extends Controller
         return to_route('item.index');
     }
 
+    public function edit(Item $item)
+    {
+        return view("item.edit")->with("item", $item);
+    }
+
+    public function update(Item $item, ItemFormRequest $request)
+    {
+        $item->fill($request->all());
+        $item->save();
+        return to_route('item.index');
+    }
+
     public function destroy(Item $item)
     {
         $item->delete();
