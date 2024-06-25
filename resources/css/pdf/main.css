@@ -1,0 +1,36 @@
+.border-collapse {
+    border-collapse: collapse;
+}
+
+.text-white {
+    color: #ffff;
+}
+.border-dark {
+    border-color: rgb(0 0 0 1);
+}
+.border-2 {
+    border-width: 2px;
+}
+.p-4 {
+    padding: 1rem;
+}
+.bg-gray-dark {
+    background-color: rgb(39 52 68);
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+.flex {
+    display: flex;
+}
+.mt-2 {
+    margin-top: 0.5rem;
+}
+.text-center {
+    text-align: center;
+}
+.py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
