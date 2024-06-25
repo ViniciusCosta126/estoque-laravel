@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedTinyInteger('amount');
             $table->unsignedTinyInteger('minimum_quantity');
+            $table->unsignedTinyInteger('max_quantity');
+            $table->decimal('sale_price', 100, 2);
+            $table->decimal('cost_price', 100, 2);
             $table->timestamps();
         });
     }

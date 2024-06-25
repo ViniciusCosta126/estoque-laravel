@@ -1,4 +1,4 @@
-<aside class="bg-gray-dark text-white w-64 min-h-screen p-4">
+<aside class="bg-gray-dark text-white w-64 h-screen p-4">
     <nav>
         <ul class="space-y-2">
             <li class="menu-suspenso">
