@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $items = Item::orderBy("name")->get();
-        return view("item.index")->with("items", $items);
+        $mensagemSucesso = $request->session()->get("mensagem.sucesso");
+        return view("item.index")->with("items", $items)->with("mensagemSucesso", $mensagemSucesso);
     }
     public function create()
     {
@@ -22,7 +23,7 @@ class ItemController extends Controller
     public function store(ItemFormRequest $request)
     {
         $item = Item::create($request->all());
-        return to_route('item.index');
+        return to_route('item.index')->with('mensagem.sucesso', "O {$item->name} foi adicionado com sucesso");
     }
 
     public function edit(Item $item)
@@ -34,7 +35,7 @@ class ItemController extends Controller
     {
         $item->fill($request->all());
         $item->save();
-        return to_route('item.index');
+        return to_route('item.index')->with('mensagem.sucesso', "O {$item->name} foi alterado com sucesso");;
     }
 
     public function destroy(Item $item)

@@ -23,16 +23,23 @@
         <div>
             <h1 class="text-white text-xl font-semibold">Controle de estoque</h1>
         </div>
-        {{-- <div class="flex items-center space-x-4">
-            <span class="text-white">Bem vindo</span>
-            <i class="fas fa-user-circle text-white text-2xl"></i>
-        </div> --}}
     </nav>
     <!-- Navegación lateral -->
     <div class="flex h-screen">
         <x-sidebar.sidebar />
-        <main class=" p-4 ">
+        <main class="p-4">
             <h1 class="text-4xl font-bold uppercase mb-4">{{ $page }}</h1>
+            @if ($errors->any())
+                <div class="">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="font-semibold text-white bg-red-light py-1 px-2 rounded mb-1">
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             {{ $slot }}
         </main>
     </div>

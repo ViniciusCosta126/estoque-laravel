@@ -1,4 +1,9 @@
 <x-layout title="Home" page="Itens estoque">
+    @if ($mensagemSucesso)
+        <div class="bg-green-light rounded w-fit px-2 py-1 mb-2">
+            <p class="text-xl text-bold text-white">{{ $mensagemSucesso }}</p>
+        </div>
+    @endif
     <table class="border-collapse overflow-y-auto">
         <thead>
             <tr class="border-2 border-dark text-white">
