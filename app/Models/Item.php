@@ -9,4 +9,8 @@ class Item extends Model
 {
     use HasFactory;
     protected $fillable = ["name", "amount", "minimum_quantity", "max_quantity", "sale_price", "cost_price"];
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)->withPivot('quantity', 'price')->withTimestamps();
+    }
 }
