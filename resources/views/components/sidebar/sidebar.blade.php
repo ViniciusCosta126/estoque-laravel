@@ -24,8 +24,28 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#" class="block p-2 hover:bg-gray-700 flex items-center">Pedido de peça</a>
+            <li class="menu-suspenso">
+                <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                    <div class="flex items-center">
+                        <i class="fas fa-shopping-cart mr-2 text-xs"></i>
+                        <span>Pedidos</span>
+                    </div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </div>
+                <ul class="suspenso ml-4 hidden">
+                    <li>
+                        <a href="{{ route('order.index') }}" class="block p-2 hover:bg-gray-700 flex items-center">
+                            <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                            Ver pedidos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('order.create') }}" class="block p-2 hover:bg-gray-700 flex items-center">
+                            <i class="fas fa-chevron-right mr-2 text-xs"></i>
+                            Adicionar pedido
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>

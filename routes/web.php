@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PDFController;
 use App\Models\Item;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,9 @@ Route::get('/', function () {
 });
 
 Route::resource("/item", ItemController::class)->except(['show']);
+
+Route::resource('order', OrderController::class);
+Route::get('/items/search', [ItemController::class, 'search']);
 
 Route::get('item/downloads', function () {
     return (new FastExcel(Item::all()))->download('items.xlsx');

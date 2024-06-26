@@ -18,7 +18,8 @@
 
 <body class="bg-gray-light">
     @vite('resources/js/app.js')
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.0/dist/js/select2.min.js"></script>
     <nav class="bg-blue p-4 flex items-center justify-between">
         <div>
             <h1 class="text-white text-xl font-semibold">Controle de estoque</h1>

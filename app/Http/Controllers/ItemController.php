@@ -43,4 +43,12 @@ class ItemController extends Controller
         $item->delete();
         return to_route("item.index");
     }
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('q');
+
+        $items = Item::where('name', 'like', '%' . $searchTerm . '%')->get();
+
+        return response()->json($items);
+    }
 }
