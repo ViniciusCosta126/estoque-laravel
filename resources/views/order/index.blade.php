@@ -21,19 +21,19 @@
             @foreach ($orders as $order)
                 <tr class="border-2">
                     <td class="text-center py-1">
-                        <a href="" class="underline underline-offset-2">
+                        <a href="{{ route('order.show', $order->id) }}" class="underline underline-offset-2">
                             {{ $order->id }}
                         </a>
                     </td>
                     <td class="text-center py-1 px-2">
-                        <a href="" class="underline underline-offset-1">
+                        <a href="{{ route('order.show', $order->id) }}" class="underline underline-offset-1">
                             {{ $order->customer_name }}
                         </a>
                     </td>
                     <td class="text-center py-1">{{ $order->cpf }}</td>
                     <td class="text-center py-1">{{ $order->phone_number }}</td>
                     <td class="text-center py-1">{{ $order->status }}</td>
-                    <td class="text-center py-1">{{ $order->total_amount }}</td>
+                    <td class="text-center py-1">R$ {{ number_format((float) $order->total_amount, 2) }}</td>
                     <td class="text-center py-1">{{ $order->address }}</td>
 
                     <td class="flex justify-evenly py-1">

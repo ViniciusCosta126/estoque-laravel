@@ -32,8 +32,12 @@ class OrderController extends Controller
             $item['price'] = (float) $item['price'];
             $order->items()->attach($item['item_id'], ['quantity' => $item['quantity'], 'price' => $item['price']]);
         };
-
-
         return to_route('order.index')->with('mensagem.sucesso', 'Order created successfully.');
+    }
+
+    public function show($id)
+    {
+        $order = Order::with('items')->findOrFail($id);
+        return view('order.show')->with('order', $order);
     }
 }
