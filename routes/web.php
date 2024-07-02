@@ -15,6 +15,7 @@ Route::resource("/item", ItemController::class)->except(['show']);
 
 Route::resource('order', OrderController::class);
 Route::get('/items/search', [ItemController::class, 'search']);
+Route::get('/items/search/{param}', [ItemController::class, 'obterDados']);
 
 Route::get('item/downloads', function () {
     return (new FastExcel(Item::all()))->download('items.xlsx');

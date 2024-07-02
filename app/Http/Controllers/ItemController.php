@@ -45,10 +45,14 @@ class ItemController extends Controller
     }
     public function search(Request $request)
     {
-        $searchTerm = $request->input('q');
-
-        $items = Item::where('name', 'like', '%' . $searchTerm . '%')->get();
-
+        $items = Item::all();
         return response()->json($items);
+    }
+    public function obterDados($param)
+    {
+        // Exemplo: buscar usuários cujo nome contém o parâmetro
+        $dados = Item::where('id', 'like', '%' . $param . '%')->get();
+
+        return response()->json($dados);
     }
 }
