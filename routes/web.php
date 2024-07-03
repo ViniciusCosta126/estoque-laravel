@@ -22,4 +22,5 @@ Route::get('item/downloads', function () {
 })->name("download");
 
 
-Route::get('/export-pdf', [PDFController::class, 'exportPDF'])->name("download-pdf");
+Route::get('/export-pdf', [PDFController::class, 'exportPDFItem'])->name("download-pdf-item");
+Route::get('/export-pdf-order/{id}', [PDFController::class, 'exportPDFOrder'])->name("download-pdf-order");
