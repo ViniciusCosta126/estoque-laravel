@@ -41,7 +41,7 @@
         <div class="grid grid-cols-2 bg-gray pl-1 gap-x-20 rounded-b py-2">
             <p><span class="font-bold">Data do pedido:</span> {{ $order->created_at }}</p>
             <p><span class="font-bold">Valor total:</span> R${{ number_format((float) $order->total_amount, 2) }}</p>
-            <p><span class="font-bold">Contato:</span> (16) 99613-1443</p>
+            <p><span class="font-bold">Contato:</span> (63) 2464-5314</p>
         </div>
         <div class="flex mt-2 justify-end">
             <a href="{{ route('download-pdf-order', $order->id) }}" class="text-2xl ml-2 cursor-pointer text-red"><i

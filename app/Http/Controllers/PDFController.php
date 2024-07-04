@@ -25,4 +25,11 @@ class PDFController extends Controller
         $pdf = PDF::loadView('pdf.order', compact("order"));
         return $pdf->setPaper('A4', "landscape")->download("order.pdf");
     }
+    public function exportPDFOrders()
+    {
+
+        $orders = Order::with('items')->get();
+        $pdf = PDF::loadView('pdf.all-orders', compact("orders"));
+        return $pdf->setPaper('A4', "landscape")->download("orders.pdf");
+    }
 }
