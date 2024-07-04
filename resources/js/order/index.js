@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             dataItems = data
             const selectedItem = document.getElementById('itemSelect')
-            data.forEach(element => {
-                var option = document.createElement("option")
-                option.value = element.id
-                option.text = element.name
-                selectedItem.appendChild(option)
+            data.forEach(element => {    
+                if(parseInt(element.amount) !== 0 ){
+                    var option = document.createElement("option")
+                    option.value = element.id
+                    option.text = element.name
+                    selectedItem.appendChild(option)
+                }
             });
 
         })
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 try {
                     const response = await fetch('/items/search/' + parametro);
                     const data = await response.json();
-                
+
                     const idInput = document.createElement('input')
                     idInput.type = 'text';
                     idInput.value = data[0].id;

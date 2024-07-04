@@ -27,9 +27,17 @@ class OrderController extends Controller
         $order = Order::create($request->all());
 
         foreach ($request->items as $item) {
-
             $item['quantity'] = (int) $item['quantity'];
             $item['price'] = (float) $item['price'];
+
+            $product = Item::find($item['item_id']);
+            if (!$product || ($product->amount - $item['quantity'] < 0)) {
+                return redirect()->back()
+                    ->withErrors(['item_id' => 'Quantidade insuficiente para o produto: ' . $product->name])
+                    ->withInput();
+            }
+
+            ItemController::atualizaQuantidadeItem($item['item_id'], $item['quantity']);
             $order->items()->attach($item['item_id'], ['quantity' => $item['quantity'], 'price' => $item['price']]);
         };
         return to_route('order.index')->with('mensagem.sucesso', 'Pedido criado com sucesso.');

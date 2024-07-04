@@ -34,7 +34,7 @@
                 <div class="">
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <li class="font-semibold text-white bg-red-light py-1 px-2 rounded mb-1">
+                            <li class="font-semibold text-white bg-red-light py-1 px-2 rounded mb-1 w-2/5">
                                 {{ $error }}
                             </li>
                         @endforeach

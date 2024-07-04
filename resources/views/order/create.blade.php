@@ -1,5 +1,5 @@
 <x-layout page="Criar novo pedido" title="Criar Pedido">
-    <form class="border px-4 w-2/5" action="{{ route('order.store') }}" method="POST">
+    <form class="px-4 w-2/5" action="{{ route('order.store') }}" method="POST">
         @csrf
         <div class="flex">
             <div class="flex flex-col w-6/12 mr-2">
@@ -39,7 +39,7 @@
             <div class="flex flex-col w-6/12">
                 <label class="text-lg text-semibold" for="total_amount">Total do pedido</label>
                 <input class="px-2 py-0.5 rounded" type="text" name="total_amount" readonly id="total_amount"
-                    value="{{ old('total_amount') }}">
+                    value="">
             </div>
         </div>
 

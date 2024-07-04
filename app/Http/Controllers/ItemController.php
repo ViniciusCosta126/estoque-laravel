@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ExceptionItem;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ItemFormRequest;
 use App\Models\Item;
@@ -53,5 +54,12 @@ class ItemController extends Controller
         //buscar items cujo nome contém o parâmetro
         $dados = Item::where('id', 'like', '%' . $param . '%')->get();
         return response()->json($dados);
+    }
+
+    public static function atualizaQuantidadeItem($id, int $quantidade)
+    {
+        $item = Item::findOrFail($id);
+        $item->fill(['amount' => $item->amount - $quantidade]);
+        $item->save();
     }
 }
