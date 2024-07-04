@@ -40,7 +40,7 @@
                         <a href="">
                             <i class="fas text-yellow fa-edit"></i>
                         </a>
-                        <form action="" method="POST">
+                        <form action="{{ route('order.destroy', $order->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit"><i class="fas text-red fa-trash-alt"></i></button>
@@ -51,7 +51,7 @@
         </tbody>
     </table>
 
-    <div class="flex mt-2 justify-end">
+    <div class="flex mt-2 justify-start">
         <a href="" class="text-2xl text-green cursor-pointer"><i class="far fa-file-excel"></i></a>
         <a href="" class="text-2xl ml-2 cursor-pointer text-red"><i class="far fa-file-pdf"></i></a>
     </div>

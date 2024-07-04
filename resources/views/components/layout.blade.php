@@ -28,7 +28,7 @@
     <!-- Navegación lateral -->
     <div class="flex h-screen">
         <x-sidebar.sidebar />
-        <main class="p-4">
+        <main class="p-4 w-full">
             <h1 class="text-4xl font-bold uppercase mb-4">{{ $page }}</h1>
             @if ($errors->any())
                 <div class="">

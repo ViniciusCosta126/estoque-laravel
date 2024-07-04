@@ -50,9 +50,8 @@ class ItemController extends Controller
     }
     public function obterDados($param)
     {
-        // Exemplo: buscar usuários cujo nome contém o parâmetro
+        //buscar items cujo nome contém o parâmetro
         $dados = Item::where('id', 'like', '%' . $param . '%')->get();
-
         return response()->json($dados);
     }
 }

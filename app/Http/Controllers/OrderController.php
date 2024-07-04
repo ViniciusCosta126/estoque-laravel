@@ -22,7 +22,7 @@ class OrderController extends Controller
         $items = Item::all();
         return view('order.create')->with("items", $items);
     }
-    public function store(Request $request)
+    public function store(OrderFormRequest $request)
     {
         $order = Order::create($request->all());
 
@@ -32,13 +32,17 @@ class OrderController extends Controller
             $item['price'] = (float) $item['price'];
             $order->items()->attach($item['item_id'], ['quantity' => $item['quantity'], 'price' => $item['price']]);
         };
-        return to_route('order.index')->with('mensagem.sucesso', 'Order created successfully.');
+        return to_route('order.index')->with('mensagem.sucesso', 'Pedido criado com sucesso.');
     }
 
     public function show($id)
     {
-
         $order = Order::with('items')->findOrFail($id);
         return view('order.show')->with('order', $order);
+    }
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return to_route("order.index")->with("mensagem.sucesso", "Pedido excluido com sucesso!");
     }
 }

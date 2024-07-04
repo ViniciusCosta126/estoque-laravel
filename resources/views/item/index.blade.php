@@ -47,7 +47,7 @@
         </tbody>
     </table>
 
-    <div class="flex mt-2 justify-end">
+    <div class="flex mt-2 justify-start">
         <a href="{{ route('download') }}" class="text-2xl text-green cursor-pointer"><i
                 class="far fa-file-excel"></i></a>
         <a href="{{ route('download-pdf-item') }}" class="text-2xl ml-2 cursor-pointer text-red"><i
