@@ -24,6 +24,12 @@
         <div>
             <h1 class="text-white text-xl font-semibold">Controle de estoque</h1>
         </div>
+        <div class="flex gap-2 items-center">
+            @if (Auth::user())
+                <i class="far fa-user text-white"></i>
+                <h1 class="font-bold text-white">Logado como {{ Auth::user()->name }}</h1>
+            @endIf
+        </div>
     </nav>
     <!-- Navegación lateral -->
     <div class="flex h-screen">

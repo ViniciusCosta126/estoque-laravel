@@ -47,6 +47,13 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <form class="p-2" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">
+                        <i class="fas text-white mr-1 fa-sign-out-alt"></i>Logout</button>
+                </form>
+            </li>
         </ul>
     </nav>
 </aside>
