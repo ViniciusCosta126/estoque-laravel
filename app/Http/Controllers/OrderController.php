@@ -42,6 +42,18 @@ class OrderController extends Controller
         };
         return to_route('order.index')->with('mensagem.sucesso', 'Pedido criado com sucesso.');
     }
+    public function edit(Order $order)
+    {
+        $newOrder = Order::with('items')->findOrFail($order->id);
+        return view("order.edit")->with("order", $newOrder);
+    }
+
+    public function update(Order $order, OrderFormRequest $request)
+    {
+        $order->fill($request->all());
+        $order->save();
+        return to_route("order.index")->with('mensagem.sucesso', "Pedido atualizado com sucesso!");
+    }
 
     public function show($id)
     {

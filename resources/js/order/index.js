@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         /* Inicio função para criar evento para adiconar os itens a lista */
         const selectedItem = document.getElementById('itemSelect')
         selectedItem.addEventListener("change",async ()=>{
-            const container = document.getElementById('inputContainer');
-
-
             const selectedItem = document.getElementById('itemSelect').value;
             if (selectedItem) {
                 const parametro = encodeURIComponent(selectedItem); 
@@ -32,48 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     const response = await fetch('/items/search/' + parametro);
                     const data = await response.json();
 
-                    const idInput = document.createElement('input')
-                    idInput.type = 'text';
-                    idInput.value = data[0].id;
-                    idInput.hidden = true
-                    idInput.name = `items[${data[0].id}][item_id]`;
-        
-                    const nameInput = document.createElement('input');
-                    nameInput.type = 'text';
-                    nameInput.value = data[0].name;
-                    nameInput.placeholder = 'Nome';
-                    nameInput.readOnly = true;
-                    nameInput.setAttribute('class', 'px-2 py-0.5 rounded ')
-        
-                    const quantityInput = document.createElement('input');
-                    quantityInput.type = 'number';
-                    quantityInput.placeholder = 'Quantidade';
-                    quantityInput.name = `items[${data[0].id}][quantity]`;
-                    quantityInput.setAttribute('class', 'px-2 py-0.5 rounded quantidade')
-                    quantityInput.addEventListener('change',()=>{
-                        setValorTotal()
-                    })
-        
-                    const valueInput = document.createElement('input');
-                    valueInput.type = 'number';
-                    valueInput.value = parseFloat(data[0].sale_price).toFixed(2);
-                    valueInput.placeholder = 'Valor';
-                    valueInput.readOnly = true;
-                    valueInput.name = `items[${data[0].id}][price]`;
-                    valueInput.setAttribute('class', 'px-2 py-0.5 rounded valor-produto')
+                    if(!document.getElementById(data[0].id)){
+                        createInputs(data)
+                    }
 
-                    const quantidadeDisponivel = document.createElement('input');
-                    quantidadeDisponivel.type = 'number';
-                    quantidadeDisponivel.value = parseInt(data[0].amount);
-                    quantidadeDisponivel.readOnly = true;
-                    quantidadeDisponivel.setAttribute('class', ' px-2 py-0.5 rounded')
-        
-                    container.appendChild(idInput)
-                    container.appendChild(nameInput);
-                    container.appendChild(quantityInput);
-                    container.appendChild(quantidadeDisponivel)
-                    container.appendChild(valueInput);
-                    container.setAttribute('class', 'mt-2 grid grid-cols-4 mt-2 gap-1')
                 } catch (error) {
                     console.error('Erro:', error);
                 }
@@ -93,4 +52,52 @@ const setValorTotal = ()=>{
     })
 
     document.querySelector('#total_amount').value = valorTotal.toFixed(2)
+}
+
+const createInputs = (data)=>{
+
+    const container = document.getElementById('inputContainer');
+    const idInput = document.createElement('input')
+    idInput.type = 'text';
+    idInput.value = data[0].id;
+    idInput.setAttribute('id',data[0].id)
+    idInput.hidden = true
+    idInput.name = `items[${data[0].id}][item_id]`;
+
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.value = data[0].name;
+    nameInput.placeholder = 'Nome';
+    nameInput.readOnly = true;
+    nameInput.setAttribute('class', 'px-2 py-0.5 rounded ')
+
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.placeholder = 'Quantidade';
+    quantityInput.name = `items[${data[0].id}][quantity]`;
+    quantityInput.setAttribute('class', 'px-2 py-0.5 rounded quantidade')
+    quantityInput.addEventListener('change',()=>{
+        setValorTotal()
+    })
+
+    const valueInput = document.createElement('input');
+    valueInput.type = 'number';
+    valueInput.value = parseFloat(data[0].sale_price).toFixed(2);
+    valueInput.placeholder = 'Valor';
+    valueInput.readOnly = true;
+    valueInput.name = `items[${data[0].id}][price]`;
+    valueInput.setAttribute('class', 'px-2 py-0.5 rounded valor-produto')
+
+    const quantidadeDisponivel = document.createElement('input');
+    quantidadeDisponivel.type = 'number';
+    quantidadeDisponivel.value = parseInt(data[0].amount);
+    quantidadeDisponivel.readOnly = true;
+    quantidadeDisponivel.setAttribute('class', ' px-2 py-0.5 rounded')
+
+    container.appendChild(idInput)
+    container.appendChild(nameInput);
+    container.appendChild(quantityInput);
+    container.appendChild(quantidadeDisponivel)
+    container.appendChild(valueInput);
+    container.setAttribute('class', 'mt-2 grid grid-cols-4 mt-2 gap-1')
 }

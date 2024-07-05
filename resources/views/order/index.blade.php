@@ -37,7 +37,7 @@
                     <td class="text-center py-1">{{ $order->address }}</td>
 
                     <td class="flex justify-evenly py-1">
-                        <a href="">
+                        <a href="{{ route('order.edit', $order->id) }}">
                             <i class="fas text-yellow fa-edit"></i>
                         </a>
                         <form action="{{ route('order.destroy', $order->id) }}" method="POST">
